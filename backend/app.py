@@ -25,7 +25,7 @@ def load_zodiac_plants(csv_path):
 
 
 # ✅ Load CSV safely from the same folder as app.py
-BASE_DIR = os.path.dirname(_file_)  # directory where app.py lives
+BASE_DIR = os.path.dirname(__file__)  # directory where app.py lives
 csv_path = os.path.join(BASE_DIR, "zodiac_plants_real.csv")
 zodiac_plants = load_zodiac_plants(csv_path)
 
