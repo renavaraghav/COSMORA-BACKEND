@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(_name_)
 CORS(app)
 
 
@@ -24,7 +24,10 @@ def load_zodiac_plants(csv_path):
     return plants
 
 
-zodiac_plants = load_zodiac_plants('zodiac_plants_real.csv')
+# ✅ Load CSV safely from the same folder as app.py
+BASE_DIR = os.path.dirname(_file_)  # directory where app.py lives
+csv_path = os.path.join(BASE_DIR, "zodiac_plants_real.csv")
+zodiac_plants = load_zodiac_plants(csv_path)
 
 
 def get_zodiac_sign(day, month):
@@ -127,5 +130,5 @@ def serve(path):
         return send_from_directory(static_folder, 'index.html')
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     app.run(debug=True)
